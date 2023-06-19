@@ -20,7 +20,7 @@ public class MissionWayPoint : MonoBehaviour
         
         Vector2 pos = Camera.main.WorldToScreenPoint(target.position + offset);
 
-        if(Vector3.Dot((target.position - transform.position), transform.forward) < 0)
+        if(Vector3.Dot(target.position, transform.forward) < 0)
         {
             if(pos.x < Screen.width / 2)
             {

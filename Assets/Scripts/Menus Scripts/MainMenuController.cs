@@ -4,50 +4,68 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
-    
-    
-    RectTransform MainCanvas;
-    public RectTransform MainMenuPanel;
-    public RectTransform LoadPanel;
-    public RectTransform OptionPanel;
-    public RectTransform SoundPanel;
-    public LeanTweenType intype;
-    void Awake()
-    {        
-        MainCanvas = GameObject.FindWithTag("MainMenuCanvas").transform.GetChild(0).GetComponent<RectTransform>();
-         ShowMainMenuPanel();
+    [Header("Default Values")]
+    public float _animationSpeed = .5f;
+    public CanvasGroup panelMainMenu, panelLoadGame, panelOption, panelConfirmationtab;
+
+    private bool _isMainMenu, _isLoadMenu, _isOptionMenu;
+
+    private void Start()
+    {
+        ShowPanelMainMenu();
     }
-    public void ShowMainMenuPanel(){
-            if(!MainMenuPanel.gameObject == true){
-                MainMenuPanel.gameObject.SetActive(true); 
-            }
-        LeanTween.scale(MainMenuPanel,new Vector3(1,1,1),1f).setDelay(.5f).setEase(intype);
+    public void ShowPanelMainMenu()
+    {
+
+        LeanTween.alphaCanvas(panelMainMenu, 1, _animationSpeed);
+        panelMainMenu.blocksRaycasts = !panelMainMenu.blocksRaycasts;
+        panelMainMenu.interactable = !panelMainMenu.interactable;
+
     }
-    public void HideMainMenuPanel(){
-            LeanTween.scale(MainMenuPanel,new Vector3(0,0,0),.5f).setEaseOutSine();
-            LeanTween.move(MainMenuPanel,new Vector3(0,0,0),.7F).setOnComplete(OnHideMainMenuPanel);
+    public void HidePanelMainMenu()
+    {
+        LeanTween.alphaCanvas(panelMainMenu, 0,_animationSpeed);
+        panelMainMenu.blocksRaycasts = !panelMainMenu.blocksRaycasts;
+        panelMainMenu.interactable = !panelMainMenu.interactable;
+
     }
-    public void ShowLoadPanel(){
-            LeanTween.scale(LoadPanel,new Vector3(1,1,1),1f).setDelay(.5f).setOnComplete(OnHideMainMenuPanel);               
-            LeanTween.delayedCall(.5f,HideMainMenuPanel);
+
+    public void ShowPanelOptionPanel()
+    {
+        LeanTween.alphaCanvas(panelOption, 1, _animationSpeed);
+        panelOption.blocksRaycasts = !panelOption.blocksRaycasts;
+        panelOption.interactable = !panelOption.interactable;
     }
-    public void HideLoadPanel(){
-            LeanTween.scale(LoadPanel,new Vector3(0,0,0),.5f).setEaseOutSine();
-            LeanTween.delayedCall(.5f,ShowMainMenuPanel);
+    public void HidePanelOptionPanel()
+    {
+        LeanTween.alphaCanvas(panelOption, 0, _animationSpeed);
+        panelOption.blocksRaycasts = !panelOption.blocksRaycasts;
+        panelOption.interactable = !panelOption.interactable;
     }
-    public void ShowOptionPanel(){
-            LeanTween.scale(OptionPanel,new Vector3(1,1,1),1f).setDelay(1.5f).setOnComplete(OptionPanelFinalPosition);               
-            LeanTween.delayedCall(.5f,HideMainMenuPanel);
+    public void ShowPanelLoadGame()
+    {
+        LeanTween.alphaCanvas(panelLoadGame, 1, _animationSpeed);
+        panelLoadGame.blocksRaycasts = !panelLoadGame.blocksRaycasts;
+        panelLoadGame.interactable = !panelLoadGame.interactable;
+
     }
-    public void OptionPanelFinalPosition(){
-            LeanTween.scale(OptionPanel,new Vector3(.7f,.7f,.7f),.5f).setEaseOutQuint();
+    public void HidePanelLoadGame()
+    {
+        LeanTween.alphaCanvas(panelLoadGame, 0, _animationSpeed);
+        panelLoadGame.blocksRaycasts = !panelLoadGame.blocksRaycasts;
+        panelLoadGame.interactable = !panelLoadGame.interactable;
     }
-    public void HideOptionPanel(){
-            LeanTween.scale(OptionPanel,new Vector3(0,0,0),.5f).setEaseInBounce();
-            LeanTween.move(OptionPanel,new Vector3(0,0,0),.7F);
+    public void ShowConfirmationTab()
+    {
+        LeanTween.alphaCanvas(panelConfirmationtab, 1, _animationSpeed);
+        panelConfirmationtab.blocksRaycasts = !panelConfirmationtab.blocksRaycasts;
+        panelConfirmationtab.interactable = !panelConfirmationtab.interactable;
     }
-    public void OnHideMainMenuPanel(){
-       MainMenuPanel.gameObject.SetActive(false);
-    } 
-    
+    public void HideConfirmationTab()
+    {
+        LeanTween.alphaCanvas(panelConfirmationtab, 0, _animationSpeed);
+        panelConfirmationtab.blocksRaycasts = !panelConfirmationtab.blocksRaycasts;
+        panelConfirmationtab.interactable = !panelConfirmationtab.interactable;
+
+    }
 }

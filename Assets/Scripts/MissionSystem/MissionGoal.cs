@@ -16,7 +16,7 @@ public class MissionGoal
         _currentAmount++;
    }
    public void StudyLesson(){
-        if (_goalType == MissionGoalType.Studying);
+        if (_goalType == MissionGoalType.Studying)
         _currentAmount++;
         
    }

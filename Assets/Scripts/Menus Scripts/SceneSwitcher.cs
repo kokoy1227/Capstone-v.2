@@ -5,29 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {   
-    public void register(){
+    public void registerlogin(){
         SceneManager.LoadScene(0);
-    }
-    public void login(){
-        SceneManager.LoadScene(1);
     }
     
     public void mainmenu(){
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
-    public void newgame(){
+    public void characterselect(){
+        SceneManager.LoadScene(2);  
+    }
+
+    public void timeline(){
         SceneManager.LoadScene(3);
+       
     }
 
-    public void gameplay(){
+    public void gameplay()
+    {
         SceneManager.LoadScene(4);
-       
-    }
-
-    public void quiz(){
-        SceneManager.LoadScene(5);
-       
     }
 
     public void exit(){
