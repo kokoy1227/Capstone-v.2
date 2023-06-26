@@ -11,23 +11,16 @@ public class MissionProvider : MonoBehaviour
 
     public Text _title;
     public Text _description;
-    public Text _story;
 
+
+    private void Awake() {
+        OpenMissionWindow();
+    }
 
     public void OpenMissionWindow(){
         _missionWindow.SetActive(true);
         _title.text = _mission.title;
         _description.text = _mission.description;
-        _story.text = _mission.story;
-        
-          
-    }
-    public void OnTriggerEnter(Collider other){
-        
-    }
-
-    public void AcceptMission(){
-        _missionWindow.SetActive(false);
         _mission.isActive = true;
         _player.mission = _mission;
         _mission.goalLocation.SetActive(true);

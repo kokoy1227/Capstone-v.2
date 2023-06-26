@@ -9,16 +9,13 @@ public class MissionGoalReached : MonoBehaviour
     public Player _player;
     public Mission _mission;
 
-    public GameObject QuizPanel;
     public GameObject _missionWindow;
-    public GameObject _missionLocation;
 
     public void OnTriggerEnter(Collider other){
-        
+       _mission.goalLocation.SetActive(false);
+        _mission.goalWaypoint.SetActive(false);
+        _missionWindow.SetActive(false);
+        SceneManager.LoadScene(5);
 
-        if (_missionProvider._mission.missionGoal.IsReached())
-            _missionLocation.SetActive(false);
-            
-         
     }
 }
